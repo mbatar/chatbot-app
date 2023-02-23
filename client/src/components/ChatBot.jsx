@@ -44,13 +44,30 @@ const ChatBot = () => {
     }
 
     return (
-        <div id="chatbox" className="chatbox">
+        <div id="chatbox">
+            <div className="flex justify-between items-center">
+                <div>
+                    <div>All Messages</div>
+                    <div>Settings</div>
+                </div>
+                <div className="flex items-center">
+                    <div>
+                        <div>sttek</div>
+                        <div>Cloud, The Internet</div>
+                    </div>
+                    <div className="grow flex items-center">
+                        <div>booty-beep-boop</div>
+                        <div>5m</div>
+                    </div>
+                    <div>Logo</div>
+                </div>
+            </div>
             {
                 messageList.map((message,index) => (
                     <div key={index}>{message.data.message}</div>
                 ))
             }
-            <input type="text" onChange={e => setMessage(e.target.value)} />
+            <input type="text" className="border rounded" onChange={e => setMessage(e.target.value)} />
             <button onClick={sendMessage}>Gönder</button>
         </div>
     )
