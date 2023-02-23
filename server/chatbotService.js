@@ -14,7 +14,7 @@ async function trainChatBotIA() {
         manager.addAnswer('en', 'greetings.bye', 'see you soon!');
         manager.addAnswer('en', 'greetings.hello', 'Hey there!');
         manager.addAnswer('en', 'greetings.hello', 'Greetings!');
-await manager.train();
+        await manager.train();
         manager.save();
         console.log("AI has been trainded")
         resolve(true);
@@ -32,12 +32,12 @@ const connectWebSocket = (io) => {
             socket.join(userId);
             console.log("New user joined!")
         });
-socket.on('new-msg', async function (data) {
+        socket.on('new-msg', async function (data) {
             let response = await generateResponseAI(data.msg);
             io.to(data.room).emit('send-msg-response', response.answer !== undefined
                 ? response.answer : "I am sorry, I don't understand :( ");
         })
-});
+    });
 }
 module.exports = {
     connectWebSocket,
